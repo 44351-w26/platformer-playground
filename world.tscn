@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=4 uid="uid://deck8slh4e0wr"]
+
+[ext_resource type="PackedScene" uid="uid://c6wr7tur8fhcv" path="res://platforms.tscn" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://145l8ccv5irf" path="res://world.gd" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://bk0hk81j75hhg" path="res://player.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://v5bay8gqd34i" path="res://enemy.tscn" id="4_aqk2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fj7yv"]
+size = Vector2(2646.5, 20)
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_tlwt5")
+
+[node name="Platforms" parent="." instance=ExtResource("1_fj7yv")]
+tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAADAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAA=")
+
+[node name="Player" parent="." instance=ExtResource("2_fj7yv")]
+position = Vector2(121, 133)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+
+[node name="KillPlane" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillPlane"]
+position = Vector2(1315.75, 635)
+shape = SubResource("RectangleShape2D_fj7yv")
+
+[node name="Enemy" parent="." instance=ExtResource("4_aqk2v")]
+position = Vector2(657, 184)
+
+[connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
