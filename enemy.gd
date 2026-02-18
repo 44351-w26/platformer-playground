@@ -30,8 +30,8 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 	body.velocity.y = -350
 	velocity = Vector2.ZERO
 	is_alive = false
-	$Hitbox.set_deferred("disabled", true)
-	$Hurtbox.set_deferred("disabled", true)
+	$Hitbox/CollisionShape2D.set_deferred("disabled", true)
+	$Hurtbox/CollisionShape2D.set_deferred("disabled", true)
 	await get_tree().create_timer(1).timeout
 	velocity.y = -150
 	velocity.x = 100
