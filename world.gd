@@ -12,5 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_kill_plane_body_entered(body: Node2D) -> void:
-	body.position.x = 121
-	body.position.y = 133
+	body.position = $PlayerSpawn.position
+
+
+func _on_enemy_hit_player() -> void:
+	$Player.position = $PlayerSpawn.position

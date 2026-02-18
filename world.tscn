@@ -30,4 +30,8 @@ shape = SubResource("RectangleShape2D_fj7yv")
 [node name="Enemy" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(657, 184)
 
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(121, 133)
+
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
+[connection signal="hit_player" from="Enemy" to="." method="_on_enemy_hit_player"]
