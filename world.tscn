@@ -12,7 +12,7 @@ size = Vector2(2646.5, 20)
 script = ExtResource("1_tlwt5")
 
 [node name="Platforms" parent="." instance=ExtResource("1_fj7yv")]
-tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAADAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAcAAAABAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAADAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAD//wAAAAABAAAAAAD//wEAAAABAAAAAAD//wIAAAABAAAAAAD//wMAAAABAAAAAAD//wQAAAABAAAAAAD//wUAAAABAAAAAAD//wYAAAABAAAAAAD//wcAAAABAAAAAAALAAYAAAADAAEAAAAMAAUAAAADAAEAAAANAAUAAAACAAAAAAAOAAUAAAACAAAAAAAPAAUAAAACAAAAAAA=")
 
 [node name="Player" parent="." instance=ExtResource("2_fj7yv")]
 position = Vector2(121, 133)
@@ -29,9 +29,13 @@ shape = SubResource("RectangleShape2D_fj7yv")
 
 [node name="Enemy" parent="." instance=ExtResource("4_aqk2v")]
 position = Vector2(657, 184)
+is_lemming = false
 
 [node name="PlayerSpawn" type="Marker2D" parent="."]
 position = Vector2(121, 133)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_aqk2v")]
+position = Vector2(445, 323)
 
 [connection signal="body_entered" from="KillPlane" to="." method="_on_kill_plane_body_entered"]
 [connection signal="hit_player" from="Enemy" to="." method="_on_enemy_hit_player"]

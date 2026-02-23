@@ -15,6 +15,7 @@ size = Vector2(62, 49)
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
+floor_snap_length = 7.0
 script = ExtResource("1_4gyqm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -46,6 +47,10 @@ collision_mask = 2
 position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_qi2p4")
 debug_color = Color(0.30681917, 0.62754047, 0, 0.41960785)
+
+[node name="CliffDetector" type="RayCast2D" parent="."]
+position = Vector2(-30, -2)
+target_position = Vector2(0, 65)
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

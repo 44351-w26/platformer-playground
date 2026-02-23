@@ -68,6 +68,7 @@ height = 86.0
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 5
+floor_snap_length = 6.0
 script = ExtResource("1_onrkg")
 metadata/_edit_group_ = true
 

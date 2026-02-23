@@ -3,15 +3,26 @@ extends CharacterBody2D
 signal hit_player
 signal got_squished
 
+@export var is_lemming = true
+
 const SPEED = 150.0
 var direction = -1
 var is_alive = true
+
+func _ready() -> void:
+	$CliffDetector.enabled = not is_lemming
+	if not is_lemming:
+		$Sprite2D.self_modulate = Color(1,0,0,1)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if is_on_floor() and not is_lemming:
+		if not $CliffDetector.is_colliding():
+			direction *= -1
+			$CliffDetector.position.x *= -1
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -23,6 +34,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	if is_on_wall():
 		direction *= -1
+		$CliffDetector.position.x *= -1 
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
